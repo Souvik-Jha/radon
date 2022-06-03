@@ -37,26 +37,67 @@ router.get('/candidates/:canidatesName', function(req, res){
 })
 
 router.get('/movies', function(req, res){
-    // let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
-    // res.send(arr)
+    let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
+    res.send(movies)
 })
 
 router.get('/movies/:indexNumber', function(req, res){
     let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
-    if (req.params.indexNumber >= movies.length){
+    if (req.params.indexNumber <= movies.length){
         console.log("enter valid index number")
         
     }else{
         console.log(movies[req.params.indexNumber])
     }
-    // console.log("the movie is"+ JSON.stringify(req.params) )
-    // console.log("movie name is"+ req.params.indexNumber)
+
     res.send("DONE")
 })
 
 
+router.get('/films', function(req, res){
+    let films = [ {
+        id: 1,
+        name: "The Shining"
+       }, {
+        id: 2,
+        name: "Incendies"
+       }, {
+        id: 3,
+        "name": "Rang de Basanti"
+       }, {
+        id: 4,
+        name: "Finding Nemo"
+       }]
+       res.send(films)
+       
+})
 
 
+// router.get('/films/:filmId', function(req, res){
+//     let films = [ {
+//         id: 1,
+//         name: "The Shining"
+//        }, {
+//         id: 2,
+//         name: "Incendies"
+//        }, {
+//         id: 3,
+//         name: "Rang de Basanti"
+//        }, {
+//         id: 4,
+//         name: "Finding Nemo"
+//        }]
+
+
+//        if (req.params.filmId <= films.length){
+//         res.send("enter valid index number")
+        
+//     }else{
+//         res.send(films[req.params.filmId])
+
+    
+// }
+// })
 
 module.exports = router;
 // adding this comment for no reason
