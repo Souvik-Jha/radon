@@ -36,6 +36,27 @@ router.get('/candidates/:canidatesName', function(req, res){
     res.send('Done')
 })
 
+router.get('/movies', function(req, res){
+    // let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
+    // res.send(arr)
+})
+
+router.get('/movies/:indexNumber', function(req, res){
+    let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
+    if (req.params.indexNumber >= movies.length){
+        console.log("enter valid index number")
+        
+    }else{
+        console.log(movies[req.params.indexNumber])
+    }
+    // console.log("the movie is"+ JSON.stringify(req.params) )
+    // console.log("movie name is"+ req.params.indexNumber)
+    res.send("DONE")
+})
+
+
+
+
 
 module.exports = router;
 // adding this comment for no reason
