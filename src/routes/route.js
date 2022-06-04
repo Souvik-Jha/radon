@@ -12,7 +12,6 @@ router.get('/test-me', function (req, res) {
     console.log('The first element received from underscope function is '+firstElement)
     res.send('My first ever api!')
 });
-
 router.get('/hello', function (req, res) {
    
     res.send('Hello there!')
@@ -26,6 +25,10 @@ router.get('/candidates', function(req, res){
     console.log('State is '+state)
     console.log('Gender is '+gender)
     console.log('District is '+district)
+
+
+
+
     let candidates = ['Akash','Suman']
     res.send(candidates)
 })
@@ -36,10 +39,14 @@ router.get('/candidates/:canidatesName', function(req, res){
     res.send('Done')
 })
 
-router.get('/movies', function(req, res){
-    let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
-    res.send(movies)
-})
+
+
+
+
+// router.get('/movies', function(req, res){
+//     let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
+//     res.send(movies)
+// })
 
 router.get('/movies/:indexNumber', function(req, res){
     let movies = ["Rang de basanti", "The shining", "Lord of the rings", "Batman begins"]
