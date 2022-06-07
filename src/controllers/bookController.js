@@ -13,8 +13,10 @@ const bookList= async function (req, res) {
     res.send({msg: allBooks})
 }
 
-const getBooksInYear= async function (req, res) {
-    let booksInYear= await BookModel.find({year: 2021})
+
+const getBooksInYear = async function(req, res) {
+    let year = req.body
+    let booksInYear = await BookModel.find(year)
     res.send({msg: booksInYear})
 }
 
