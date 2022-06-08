@@ -2,6 +2,8 @@ const { count } = require("console")
 const BookModel= require("../models/bookModel")
 const authorModel1= require("../models/authorModel")
 const bookModel = require("../models/bookModel")
+const { find } = require("../models/bookModel")
+const res = require("express/lib/response")
 
 const createBook= async function (req, res) {
     let data1= req.body
@@ -25,9 +27,17 @@ const getAuthor = async function(req, res) {
 
 const getBooks = async function(req, res) {
     let books= await bookModel.find( { price : { $gte: 50, $lte: 100} } )
-    let id = books.select({ author_id :1, _id: 0})
-    console.log(id)
-}
+    let arr1 = []
+    books.forEach(ele => arr1.push(ele.author_id))
+    for (let i = 0 ; i < arr1.length; i++) {
+        let allAuthor = await authorModel1.find({author_id:arr1[i]}).select({author_name:1,_id:0})
+        console.log(allAuthor)
+    }
+   }
+
+
+
+   
 
 // const bookList= async function (req, res) {
 //     let allBooks= await BookModel.find().select( { bookName: 1, authorName: 1,_id: 0})
