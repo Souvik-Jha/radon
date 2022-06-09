@@ -35,6 +35,10 @@ const getBooks = async function(req, res) {
     }
    }
 
+   const authorList = async function(req, res) {
+       let author = await authorModel1.find({age:{$gt:50}})
+   }
+
 
 
    

@@ -19,7 +19,9 @@ router.get('/getAuthor', BookController.getAuthor)
 
 router.get('/getBooks', BookController.getBooks)
 
-router.get('books-by-authorid/author-id')//
+// router.get('books-by-authorid/author-id')
+
+router.get('/authorList', BookController.authorList)
 
 // router.get("/bookList", BookController.bookList)
 
