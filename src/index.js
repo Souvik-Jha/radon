@@ -1,4 +1,6 @@
 const express = require('express');
+const ip = require('ip');
+
 const bodyParser = require('body-parser');
 const route = require('./routes/route.js');
 const { default: mongoose } = require('mongoose');
@@ -14,11 +16,13 @@ mongoose.connect("mongodb+srv://functionup-cohort:G0Loxqc9wFEGyEeJ@cluster0.rzot
 .then( () => console.log("MongoDb is connected"))
 .catch ( err => console.log(err) )
 
-app.use (
-    function (req, res, next) {
-        console.log ("inside GLOBAL MW");
-        next();
-  }
+app.use ((req,res,next)=>{
+ let time= new Date()
+ let ipAddress= ip.address()
+ let route= req.path;
+ console.log(time + "  " + ipAddress + "  " + route )
+ next()
+}
   );
 
 app.use('/', route);
