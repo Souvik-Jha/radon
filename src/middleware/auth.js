@@ -13,4 +13,21 @@ let userValidation = function(req, res, next){
       next()
 }
 
+
+let authorization = function(req,res,next){
+    let token = req.headers["x-Auth-token"];
+    if (!token) token = req.headers["x-auth-token"];
+    let decodedToken = jwt.verify(token, 'functionup-radon')
+        //userId for which the request is made. In this case message to be posted.
+        let userToBeModified = req.params.userId
+        //userId for the logged-in user
+        let userLoggedIn = decodedToken.userId
+    
+        //userId comparision to check if the logged-in user is requesting for their own data
+        if(userToBeModified != userLoggedIn) return res.send({status: false, msg: 'User logged is not allowed to modify the requested users data'})
+        next()
+}
+
+
 module.exports.userValidation = userValidation
+module.exports.authorization = authorization
