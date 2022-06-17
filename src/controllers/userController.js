@@ -78,6 +78,8 @@ const updateUser = async function (req, res) {
   try {
     let userId = req.params.userId;
     let userData = req.body;
+    if(key(userData).length>=0)
+    return res.status(400).send("enter what you want to update")
     let updatedUser = await userModel.findOneAndUpdate({ _id: userId }, userData, { new: true })
     res.send({ status: updatedUser, data: updatedUser });
   }
