@@ -1,4 +1,5 @@
-let axios = require("axios")
+let axios = require("axios");
+const { get } = require("../routes/route");
 
 
 let getStates = async function (req, res) {
@@ -75,7 +76,31 @@ let getOtp = async function (req, res) {
     catch (err) {
         console.log(err)
         res.status(500).send({ msg: err.message })
+
+        
     }
+}
+
+
+
+let getByDistrict = async function(req,res){
+    try{
+        let districtId = req.query.district_id
+        let date = req.query.date
+        console.log(`query params are: ${districtId} ${date}`)
+        let options ={
+            method: "get",
+            url: `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=${districtId}&date=${date}`
+    }
+    let result = await axios(options)
+    let data = result.data
+    res.status(200).send({ msg: data, status: true })
+}catch (err) {
+    console.log(err)
+    res.status(500).send({ msg: err.message })
+
+    
+}
 }
 
 
@@ -83,3 +108,4 @@ module.exports.getStates = getStates
 module.exports.getDistricts = getDistricts
 module.exports.getByPin = getByPin
 module.exports.getOtp = getOtp
+module.exports.getByDistrict = getByDistrict
